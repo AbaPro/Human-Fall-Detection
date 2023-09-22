@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Control Panel{% endblock %}
+{% block content%}
+
+
+<div class="alert alert-dismissible alert-success " style="display: none;">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    Please wait the model is loading
+</div>
+
+<!-- camera -->
+<section class="pt-5" id="Camera">
+    <div class="bg-holder z-index--1 bottom-0 d-none d-lg-block background-position-top"
+        style="background-image:url(../static/assets/img/superhero/oval.png);opacity:.5; background-position: top !important ;">
+    </div>
+    <!--/.bg-holder-->
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h4 class="fs-1 fw-bold">MoveNet Model</h4>
+                <p class="mb-4 fw-medium text-secondary">
+                    The MoveNet model is a deep neural network that uses convolutional layers to detect human
+                    body keypoints and pose landmarks in images or videos.
+                    <br><br> For better result switch to the more acurate model <br> (make sure you have a
+                    modern nividia gpu)
+                </p>
+                <form>
+                    <div>
+                        <label class="form-label">Choose Your Camera</label>
+                        <select class="form-select">
+                            <option>Default Camera</option>
+                            <option>Camera 2</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label mt-2 ">Alert Type</label>
+                        <select class="form-select">
+                            <option>Sound</option>
+                            <option>Picture</option>
+                            <option>Sound and Picture</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-success mt-3">Apply Settings</button>
+                </form>
+            </div>
+            <div class="col-lg-6 row">
+                <img id="camera_placeholder" src="../static/assets/img/cameraplaceholder.png" />
+                <p class="text-danger mt-3 ">the quality of the video stream and fall detection depends on your
+                    device hardware</p>
+                <button id="toggler" class="btn btn-primary">Toggle Camera On and Off</button>
+
+            </div>
+
+        </div>
+    </div><!-- end of .container-->
+
+</section>
+<!-- camera -->
+{% endblock %}
+
+{% block jquery %}
+<script>
+    $('.alert').hide()
+    $('#toggler').click(function () {
+        let current_src = $('#camera_placeholder').attr('src');
+        if (current_src == '../static/assets/img/cameraplaceholder.png') {
+            $('.alert').show()
+            $('#camera_placeholder').attr('src', "{{url_for('views.video_feed')}}")
+        } else {
+            $('.alert').hide()
+            $('#camera_placeholder').attr('src', "../static/assets/img/cameraplaceholder.png")
+        }
+    })
+</script>
+{% endblock %}

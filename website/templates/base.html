@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--    Document Title-->
+  <title> {% block title %} {% endblock %} - Human Fall Detection</title>
+
+  <!--    Favicon-->
+  <link rel="shortcut icon" type="image/x-icon" href="../static/assets/img/favicons/favicon.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <!--    Stylesheets-->
+  <link href="../static/assets/css/theme.css" rel="stylesheet" />
+
+</head>
+
+
+<body>
+
+  <main class="main" id="top">
+
+    <!--! Navbar begin  -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top" data-navbar-on-scroll="data-navbar-on-scroll">
+      <div class="container">
+        <a class="navbar-brand fw-bold fs-3" href="/">
+          <i class="fa-solid fa-person-falling fa-xl"></i>
+          Human Fall Detection</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+            class="navbar-toggler-icon">
+          </span></button>
+        <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" aria-current="page" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" aria-current="page" href="/start">Control Panel</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" aria-current="page" href="/users">Users</a></li>
+            <li class="nav-item"><a class="nav-link" aria-current="page" href="/">About</a></li>
+          </ul>
+
+          <div class="d-flex ms-lg-4 ">
+            {% if user.is_authenticated %}
+            <a class="btn me-1 " > Welcome,  {{user.first_name}} </a>
+            <a class="btn btn-warning" id="logout" href="/logout">Logout <i
+              class="fa-solid fa-arrow-right-to-bracket"></i> </a>
+            {% else %}
+            <a class="btn btn-secondary-outline" href="/login">Login</a>
+            <a class="btn btn-warning ms-3" href="/sign-up">Sign Up</a>
+            {% endif %}
+          </div>
+
+
+        </div>
+
+      </div>
+    </nav>
+    <!--! Navbar end  -->
+
+
+    <!--! alerts -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    {% if category =='error' %}
+    <div class="alert alert-dismissible alert-danger">
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      {{message}}
+    </div>
+    {% else %}
+    <div class="alert alert-dismissible alert-success ">
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      {{message}}
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <!--! alerts -->
+
+
+    <div class="container">{% block content %} {% endblock %}</div>
+
+
+
+
+    <!--! Footer begin  -->
+    <div id="footer">
+      <section class="pb-2 pb-lg-5">
+
+        <div class="container">
+          <div class="row border-top border-top-secondary pt-7">
+            <div class=" col-md-6 mb-4 mb-md-6 mb-lg-0 mb-sm-2 order-1 order-md-1 order-lg-1">
+
+              <a class="navbar-brand fw-bold fs-3 " href="/">
+                <i class="fa-solid fa-person-falling fa-xl"></i>
+                Human Fall Detection</a>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 order-3 order-md-3 order-lg-2">
+              <p class="fs-2 mb-lg-4">Quick Links</p>
+              <ul class="list-unstyled mb-0">
+                <li class="mb-1"><a class="link-900 text-secondary text-decoration-none" href="#home">Home</a></li>
+                <li class="mb-1"><a class="link-900 text-secondary text-decoration-none" href="#features">Features</a>
+                </li>
+                <li class="mb-1"><a class="link-900 text-secondary text-decoration-none" href="#risks">Risks</a></li>
+                <li class="mb-1"><a class="link-900 text-secondary text-decoration-none"
+                    href="#acknowledgements">Acknowledgements</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 order-4 order-md-4 order-lg-3">
+              <p class="fs-2 mb-lg-4">Legal stuff</p>
+              <ul class="list-unstyled mb-0">
+                <li class="mb-1"><a class="link-900 text-secondary text-decoration-none" href="#!">Disclaimer</a></li>
+                <li class="mb-1"><a class="link-900 text-secondary text-decoration-none" href="#!">Financing</a></li>
+                <li class="mb-1"><a class="link-900 text-secondary text-decoration-none" href="#!">Privacy
+                    Policy</a></li>
+                <li class="mb-1"><a class="link-900 text-secondary text-decoration-none" href="#!">Terms
+                    of
+                    Service</a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div><!-- end of .container-->
+
+      </section>
+
+      <section class="text-center py-0">
+        <div class="container">
+          <div class="container border-top py-3">
+            <div class="row justify-content-between">
+              <div class="col-12 col-md-auto mb-1 mb-md-0">
+                <p class="mb-0"> Graduation Project 2023-2024 </p>
+              </div>
+              <div class="col-12 col-md-auto">
+                <p class="mb-0">
+                  Made By Abanob Raffet</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!--! Footer end  -->
+
+
+  </main>
+
+  <!-- ===============================================-->
+  <!--    JavaScripts-->
+  <!-- ===============================================-->
+  <script src="https://kit.fontawesome.com/d71a54271d.js" crossorigin="anonymous"></script>
+  <script src="../static/vendors/@popperjs/popper.min.js"></script>
+  <script src="../static/vendors/bootstrap/bootstrap.min.js"></script>
+  <script src="../static/vendors/is/is.min.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+  <script src="../static/vendors/fontawesome/all.min.js"></script>
+  <script src="../static/assets/js/theme.js"></script>
+  <script src="../static/vendors/JQuery/jquery-3.7.1.min.js.js"></script>
+ 
+  {% block jquery %}
+  {% endblock %}
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Volkhov:wght@700&amp;display=swap"
+    rel="stylesheet">
+</body>
+
+</html>
