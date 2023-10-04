@@ -1,5 +1,6 @@
-flask
-Flask-SQLAlchemy
-flask-login
-tensorflow
-opencv-python
+Flask==2.3.2
+Flask-SQLAlchemy==3.1.1
+Flask-Login==0.6.2
+# tensorflow==2.11.0
+# numpy==1.23.5
+# opencv-python==4.7.0
