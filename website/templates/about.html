@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+{% block content%}
+
+<h2 class="mt-4 mb-2">Environment Info</h2>
+
+<table class="table table-hover">
+    <thead>
+
+    </thead>
+    <tbody>
+        <tr>
+            <th>Platform System</th>
+        <td>{{ platform_systm }}</td>
+    </tr>
+    <tr>
+        <th>Platform Version</th>
+        <td>{{ platform_version }}</td>
+    </tr>
+    <tr>
+        <th>Platform Architecture</th>
+        <td>{{ platform_architecture }}</td>
+    </tr>
+    <tr>
+        <th>Platform Network</th>
+        <td>{{ platform_network }}</td>
+    </tr>
+    <tr>
+        <th>Platform Processor</th>
+        <td>{{ platform_processor }}</td>
+    </tr>
+    <tr>
+        <th>Python Version</th>
+        <td>{{ python_version }}</td>
+    </tr>
+    <tr>
+        <th>Flask Version</th>
+        <td>{{ flask_version }}</td>
+    </tr>
+    <tr>
+        <th>Flask-SQLAlchemy Version</th>
+        <td>{{ flask_sqlalchemy_version }}</td>
+    </tr>
+    <tr>
+        <th>Flask-Login Version</th>
+        <td>{{ flask_login_version }}</td>
+    </tr>
+    <tr>
+        <th>TensorFlow Version</th>
+        <td>{{ tensorflow_version }}</td>
+    </tr>
+    <tr>
+        <th>NumPy Version</th>
+        <td>{{ numpy_version }}</td>
+    </tr>
+    <tr>
+        <th>OpenCV Version</th>
+        <td>{{ opencv_version }}</td>
+    </tr>
+</tbody>
+</table>
+
+
+{% endblock %}
