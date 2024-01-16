@@ -21,3 +21,6 @@ python main.py
 ## Viewing The App
 
 Go to `http://127.0.0.1:5000`
+
+![Picture1](https://github.com/AbaPro/Human-Fall-Detection/assets/102380881/943fe197-6913-4560-abcf-70f0efb925e1)
+
