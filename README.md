@@ -1,5 +1,7 @@
 # Flask Web App
 
+it is an artificial intelligence-based system that can detect persons falling using cameras and alert the appropriate personnel or emergency services.
+
 ## Setup & Installation
 
 Make sure you have the latest version of Python installed.
